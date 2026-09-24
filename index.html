@@ -93,11 +93,11 @@ footer{margin-top:72px;padding:28px 0 40px;border-top:1px solid var(--line);colo
     <p class="subtitle">Learning to Act in Discrete Space</p>
     <div class="authors">Anonymous Authors</div>
     <div class="btns">
-      <span class="btn off" title="Available after review"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z'/><path d='M14 3v6h6'/></svg> Paper (under review)</span>
+      <a class="btn" href="./static/dfmp/paper.pdf" target="_blank" rel="noopener"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z'/><path d='M14 3v6h6'/></svg> Paper</a>
       <span class="btn off" title="Coming soon"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='m16 18 6-6-6-6M8 6l-6 6 6 6'/></svg> Code (coming soon)</span>
     </div>
-    <p class="tldr">DFMP represents continuous robot actions as discrete tokens and generates them with a continuous-time
-      Markov chain: it keeps several valid behaviors and needs only 10 generation steps.</p>
+    <!-- <p class="tldr">DFMP represents continuous robot actions as discrete tokens and generates them with a continuous-time
+      Markov chain: it keeps several valid behaviors and needs only 10 generation steps.</p> -->
   </div>
   <div class="wrap main-video" id="video">
     <video data-autoplay muted loop controls playsinline preload="metadata" poster="static/dfmp/posters/overview.jpg">
@@ -118,8 +118,8 @@ footer{margin-top:72px;padding:28px 0 40px;border-top:1px solid var(--line);colo
 </section>
 
 <section id="real">
-  <h2>Real-robot rollouts</h2>
-  <p class="lead">Uncut autonomous runs of DFMP on a bimanual Franka setup.</p>
+  <h2>Consecutive Policy Rollouts by DFMP</h2>
+  <!-- <p class="lead">Uncut autonomous runs of DFMP on a bimanual Franka setup.</p> -->
   <div class="task-head"><h3>Cup Stacking</h3></div>
   <div class="pair"><video data-autoplay muted loop playsinline preload='metadata' controls><source src='./stacking/cup_stacking1.mp4' type='video/mp4'><source src='./stacking/cup_stacking1.mov'></video><video data-autoplay muted loop playsinline preload='metadata' controls><source src='./stacking/cup_stacking2.mp4' type='video/mp4'><source src='./stacking/cup_stacking2.mov'></video></div>
   <div class="task-head"><h3>Cup Placing</h3></div>
@@ -137,21 +137,21 @@ footer{margin-top:72px;padding:28px 0 40px;border-top:1px solid var(--line);colo
       <figure class="cmp-panel">
         <div class="media">
           <video data-group="stacking" data-autoplay muted loop playsinline preload="none" poster="static/dfmp/posters/compare/stacking_fm.jpg"><source src="static/dfmp/videos/compare/stacking_fm.mp4" type="video/mp4"></video>
-          <span class="tag">Flow Matching <em>10 steps</em></span><span class="speed">3&times;</span>
+          <span class="tag">Flow Matching <em>10 steps</em></span><span class="speed">1&times;</span>
         </div>
         <figcaption>Misses the first cup and never re-grasps it.</figcaption>
       </figure>
       <figure class="cmp-panel">
         <div class="media">
           <video data-group="stacking" data-autoplay muted loop playsinline preload="none" poster="static/dfmp/posters/compare/stacking_dp.jpg"><source src="static/dfmp/videos/compare/stacking_dp.mp4" type="video/mp4"></video>
-          <span class="tag">Diffusion Policy <em>100 steps</em></span><span class="speed">3&times;</span>
+          <span class="tag">Diffusion Policy <em>100 steps</em></span><span class="speed">1&times;</span>
         </div>
         <figcaption>Pauses at every action chunk and reacts too late when the stacked cups wobble.</figcaption>
       </figure>
       <figure class="cmp-panel ours">
         <div class="media">
           <video data-group="stacking" data-autoplay muted loop playsinline preload="none" poster="static/dfmp/posters/compare/stacking_dfmp.jpg"><source src="static/dfmp/videos/compare/stacking_dfmp.mp4" type="video/mp4"></video>
-          <span class="tag">DFMP <em>10 steps</em></span><span class="speed">3&times;</span>
+          <span class="tag">DFMP <em>10 steps</em></span><span class="speed">1&times;</span>
         </div>
         <figcaption>Misses twice, re-grasps the cups and completes the stack.</figcaption>
       </figure>
@@ -165,21 +165,21 @@ footer{margin-top:72px;padding:28px 0 40px;border-top:1px solid var(--line);colo
       <figure class="cmp-panel">
         <div class="media">
           <video data-group="placing" data-autoplay muted loop playsinline preload="none" poster="static/dfmp/posters/compare/placing_fm.jpg"><source src="static/dfmp/videos/compare/placing_fm.mp4" type="video/mp4"></video>
-          <span class="tag">Flow Matching <em>10 steps</em></span><span class="speed">3&times;</span>
+          <span class="tag">Flow Matching <em>10 steps</em></span><span class="speed">1&times;</span>
         </div>
         <figcaption>Never finds a working grasp and pushes the cup until the arm leaves its range.</figcaption>
       </figure>
       <figure class="cmp-panel">
         <div class="media">
           <video data-group="placing" data-autoplay muted loop playsinline preload="none" poster="static/dfmp/posters/compare/placing_dp.jpg"><source src="static/dfmp/videos/compare/placing_dp.mp4" type="video/mp4"></video>
-          <span class="tag">Diffusion Policy <em>100 steps</em></span><span class="speed">3&times;</span>
+          <span class="tag">Diffusion Policy <em>100 steps</em></span><span class="speed">1&times;</span>
         </div>
         <figcaption>Finds a grasp, but slowly, stuttering between action chunks.</figcaption>
       </figure>
       <figure class="cmp-panel ours">
         <div class="media">
           <video data-group="placing" data-autoplay muted loop playsinline preload="none" poster="static/dfmp/posters/compare/placing_dfmp.jpg"><source src="static/dfmp/videos/compare/placing_dfmp.mp4" type="video/mp4"></video>
-          <span class="tag">DFMP <em>10 steps</em></span><span class="speed">3&times;</span>
+          <span class="tag">DFMP <em>10 steps</em></span><span class="speed">1&times;</span>
         </div>
         <figcaption>Goes straight for the handle and finishes quickly.</figcaption>
       </figure>
@@ -189,7 +189,7 @@ footer{margin-top:72px;padding:28px 0 40px;border-top:1px solid var(--line);colo
 
 <section id="recovery">
   <h2>Recovery</h2>
-  <p class="lead">When a grasp fails, DFMP re-attempts it and still completes the task.</p>
+  <!-- <p class="lead">When a grasp fails, DFMP re-attempts it and still completes the task.</p> -->
   <div class="pair">
     <figure><video data-autoplay muted loop playsinline preload='none' poster='static/dfmp/posters/recovery/stacking.jpg'><source src='static/dfmp/videos/recovery/stacking.mp4' type='video/mp4'></video><figcaption>Cup Stacking: the grasp on the last cup misses; DFMP retries and completes the stack.</figcaption></figure>
     <figure><video data-autoplay muted loop playsinline preload='none' poster='static/dfmp/posters/recovery/placing.jpg'><source src='static/dfmp/videos/recovery/placing.mp4' type='video/mp4'></video><figcaption>Cup Placing: the first grasp tips the cup over; DFMP re-grasps it and places it in the rack.</figcaption></figure>
